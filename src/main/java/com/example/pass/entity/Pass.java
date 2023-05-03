@@ -1,5 +1,6 @@
 package com.example.pass.entity;
 
+import com.example.BaseEntity;
 import com.example.pass.PassStatus;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Pass {     // 개인에게 지급하는 PT 이용권
+public class Pass extends BaseEntity {     // 개인에게 지급하는 PT 이용권
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
