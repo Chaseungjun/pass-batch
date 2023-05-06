@@ -16,7 +16,12 @@ public interface NotificationMapStruct {
 
     NotificationMapStruct INSTANCE = Mappers.getMapper(NotificationMapStruct.class);
 
-    @Mapping(target = "uuid", source = "booking.user.uuid")  // get으로 가져옴
+    /**
+     *     User 엔티티의 meta 필드에서 uuid 값을 가져와 매핑한다.
+     *     getUuid메서드를 직접 사용하지 않아도 MapStruct가  getUuid() 메서드를 호출하여 해당 값을 가져옵니다.
+     *     booking 정보를 가져와 uuid 와 text가 들어간 Notification 객체가 만들어지며 나머지는 null값이 들어간다.
+     */
+    @Mapping(target = "uuid", source = "booking.user.uuid") //getUuid() 호출
     @Mapping(target = "text", source = "booking.startedAt", qualifiedByName = "text")
     Notification toNotificationEntity(Booking booking, NotificationEvent event);
 
