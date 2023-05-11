@@ -44,6 +44,7 @@ public class AddPassesTasklet implements Tasklet {
 
             // 해당하는 유저그룹에 있는 유저들에게 이용권을 지급하고 카운트
             count += addPasses(bulkPass, userIds);
+            bulkPass.setStatus(BulkPassStatus.COMPLETED);
         }
         log.info("AddPassesTasklet - execute: 이용권 {}건 추가 완료, startedAt={}", count, startedAt);
         return RepeatStatus.FINISHED;
